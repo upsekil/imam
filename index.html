@@ -327,31 +327,58 @@
         // --- DATA & RENDER LOGIC ---
         const idulFitriLocation = "Masjid Al-Ikhlas Lubuk";
         
-        // Location Lookup Map (Original Name -> {New Name, Link})
+        // Location Lookup Map (Mapping Input Name -> {Display Name, Link})
+        // NOTE: "Masjid Lubuk Suko" dan "Masjid Lubuk Sukon" saya arahkan ke Masjid Al-Ikhlas Lubuk 
+        // karena nama "Masjid" biasanya merujuk ke masjid desa tersebut.
         const locationMap = {
             "Masjid Lubuk": { name: "Masjid Al-Ikhlas Lubuk", url: "https://maps.app.goo.gl/8FEmWudr88DLVtye6" },
-            "Mns Siron": { name: "Menasah Lambarih", url: "https://maps.app.goo.gl/4cAUAUZDLzWL4HHY9" },
-            "Musalla Askoppol": { name: "Musallah Komplek Puskoppol", url: "https://maps.app.goo.gl/rZMj7hxrpFvwW2c59" },
-            "Mns Lamkawe": { name: "Menasah Lamkawe", url: "https://maps.app.goo.gl/2YHpp8PGvseHYAy87" },
+            "Masjid Lubuk Suko": { name: "Masjid Lubuk Suko", url: "https://maps.app.goo.gl/8FEmWudr88DLVtye6" },
+            "Masjid Lubuk Sukon": { name: "Masjid Lubuk Sukon", url: "https://maps.app.goo.gl/8FEmWudr88DLVtye6" },
+            "Menasa Siron": { name: "Menasa Siron", url: "https://maps.app.goo.gl/4cAUAUZDLzWL4HHY9" }, 
+            "Musalla Komplek Puskoppol": { name: "Musallah Komplek Puskoppol", url: "https://maps.app.goo.gl/rZMj7hxrpFvwW2c59" },
+            "Menasah Lamkawe": { name: "Menasah Lamkawe", url: "https://maps.app.goo.gl/2YHpp8PGvseHYAy87" },
             "Menasah Dham Pulo": { name: "Menasah Dham Pulo", url: "https://maps.app.goo.gl/EXxQi6HKiM6Py4CD7" },
-            "Masjid RSJ": { name: "Musalla RSJ Aceh", url: "https://maps.app.goo.gl/An7BVcPF2kLFZBMr9" },
-            "Masjid Lamgarot": { name: "Masjid Baitul Izzati Lamgarot", url: "https://maps.app.goo.gl/LzTNojkxNGWVQPTu8" },
+            "Musalla RSJ Aceh": { name: "Musalla RSJ Aceh", url: "https://maps.app.goo.gl/An7BVcPF2kLFZBMr9" },
+            "Masjid Baitul Izzati Lamgarot": { name: "Masjid Baitul Izzati Lamgarot", url: "https://maps.app.goo.gl/LzTNojkxNGWVQPTu8" },
             "Dayah Darul Ihsan": { name: "Dayah Darul Ihsan", url: "https://maps.app.goo.gl/e4Eg5z1myEdLuDTd6" },
-            "Darul Ihsan": { name: "Dayah Darul Ihsan", url: "https://maps.app.goo.gl/e4Eg5z1myEdLuDTd6" },
-            "Mns Lubuk": { name: "Menasah Lubuk Sukon", url: "https://maps.app.goo.gl/3pMyXtNTAVcLSrMR7" },
-            "Menasah Lubuk": { name: "Menasah Lubuk Sukon", url: "https://maps.app.goo.gl/3pMyXtNTAVcLSrMR7" },
-            "Dayah": { name: "Dayah Darul Aman Lubuk", url: "https://maps.app.goo.gl/TkU2rMAfVBxUJZrCA" },
-            "Masjid Lambaro": { name: "Masjid Jamik Lambaro", url: "https://maps.app.goo.gl/hEntWwNNAJwjDubQ7" },
-            "Menasah Dham": { name: "Menasah Dham Pulo", url: "https://maps.app.goo.gl/EXxQi6HKiM6Py4CD7" }
+            "Darul Ihsan Lambaed": { name: "Darul Ihsan Lambaed", url: "https://maps.app.goo.gl/e4Eg5z1myEdLuDTd6" },
+            "Menasah Lubuk Sukon": { name: "Menasah Lubuk Sukon", url: "https://maps.app.goo.gl/3pMyXtNTAVcLSrMR7" },
+            "Dayah Darul Aman Lubuk": { name: "Dayah Darul Aman Lubuk", url: "https://maps.app.goo.gl/TkU2rMAfVBxUJZrCA" },
+            "Dayah Darul Aman Lubok": { name: "Dayah Darul Aman Lubok", url: "https://maps.app.goo.gl/TkU2rMAfVBxUJZrCA" },
+            "Masjid Jamik Lambaro": { name: "Masjid Jamik Lambaro", url: "https://maps.app.goo.gl/hEntWwNNAJwjDubQ7" }
         };
 
         const rawSchedule = [
-            "", "", "Mns Siron", "Musalla Askoppol", "Masjid Lubuk", "Mns Lamkawe", 
-            "", "Menasah Dham Pulo", "Masjid RSJ", "Masjid Lubuk", "Masjid Lamgarot", 
-            "Menasah Tutong", "Musalla Askoppol", "Dayah Darul Ihsan", "Masjid Lubuk", 
-            "", "Mns Lubuk", "Menasah Dham Pulo", "Masjid RSJ", "Masjid Lubuk", 
-            "Dayah", "Masjid Lambaro", "", "Menasah di Indrapuri", "", 
-            "Darul Ihsan", "Dayah", "", "Menasah Dham", ""
+            "", 
+            "", 
+            "Menasa Siron", 
+            "Musalla Komplek Puskoppol", 
+            "Masjid Lubuk Suko", 
+            "Menasah Lamkawe", 
+            "", 
+            "Menasah Dham Pulo", 
+            "Musalla RSJ Aceh", 
+            "Masjid Lubuk Sukon", 
+            "Masjid Baitul Izzati Lamgarot", 
+            "Menasah Tutong", 
+            "Musalla Komplek Puskoppol", 
+            "Dayah Darul Ihsan", 
+            "Masjid Lubuk Sukon", 
+            "", 
+            "Menasah Lubuk Sukon", 
+            "Menasah Dham Pulo", 
+            "Musalla RSJ Aceh", 
+            "Masjid Lubuk", 
+            "Dayah Darul Aman Lubuk", 
+            "Masjid Jamik Lambaro", 
+            "", 
+            "Menasah di Indrapuri", 
+            "", 
+            "Darul Ihsan Lambaed", 
+            "Dayah Darul Aman Lubok", 
+            "", 
+            "Menasah Dham Pulo", 
+            ""
         ];
 
         document.getElementById('idul-fitri-loc').innerText = idulFitriLocation;
@@ -371,9 +398,11 @@
             let hasLink = false;
 
             if (isFilled) {
+                // Check exact match first, then partial if needed? 
+                // For now exact mapping based on key
                 const details = locationMap[location];
                 if (details) {
-                    displayLocation = details.name;
+                    displayLocation = details.name; // Keep name as input or use map name
                     mapUrl = details.url;
                     hasLink = !!details.url;
                 }
@@ -381,12 +410,11 @@
 
             const card = document.createElement('div');
 
-            // Dynamic Styling Logic based on State (Filled/Empty)
+            // Dynamic Styling Logic
             let cardBase = "glass-card p-5 rounded-xl flex flex-col justify-between group h-full transition-all duration-300 relative overflow-hidden shadow-sm ";
             
             if (isFilled) {
                 cardBase += "border-l-4 border-l-gold-500 hover:shadow-lg hover:-translate-y-1 ";
-                // Light mode hover
                 cardBase += "hover:bg-white dark:hover:bg-slate-800 ";
             } else {
                 cardBase += "border-l-4 border-l-slate-300 dark:border-l-slate-700 opacity-60 hover:opacity-100 ";
@@ -397,7 +425,7 @@
                 ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/20"
                 : "bg-slate-200 text-slate-600 dark:bg-slate-700 dark:text-slate-400 border-slate-300 dark:border-slate-600";
 
-            // Title HTML: If link exists, make it a link
+            // Title HTML
             let titleHTML = '';
             const titleClasses = isFilled
                 ? "text-lg font-bold font-serif line-clamp-2 transition-colors text-slate-800 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400"
