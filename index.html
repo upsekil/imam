@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Imam - Tgk. Ir. Saiful Hadi, M.T</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Mengaktifkan dark mode manual
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Amiri', 'serif'],
+                    },
+                    colors: {
+                        emerald: {
+                            850: '#064e3b',
+                            950: '#022c22',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base styles & Transitions */
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Dark Mode Background */
+        .dark body {
+            background-color: #0f172a;
+            background-image: radial-gradient(#1e293b 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* Light Mode Background */
+        body {
+            background-color: #f1f5f9;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: #1e293b;
+        }
+        
+        /* Glass Effect - Dark */
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Glass Effect - Light */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 10px -1px rgba(148, 163, 184, 0.1);
+        }
+
+        /* Profile Image Shape */
+        .profile-img {
+            clip-path: circle(50% at 50% 50%);
+            transition: transform 0.3s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Link Hover Effect */
+        .location-link:hover {
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+        }
+
+        /* Print Settings */
+        @media print {
+            body { background: white !important; color: black !important; }
+            .no-print { display: none !important; }
+            .glass-card { 
+                background: white !important; 
+                border: 1px solid #ccc !important; 
+                box-shadow: none !important;
+                break-inside: avoid;
+            }
+            /* Hide theme toggle and buttons on print */
+            #theme-toggle, .contact-btn, #mobile-menu-btn, #mobile-menu { display: none !important; }
+            nav { justify-content: center !important; }
+            a { text-decoration: none !important; color: black !important; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center selection:bg-emerald-500 selection:text-white">
+
+    <!-- Navigation / Top Bar -->
+    <nav class="w-full sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <a href="#">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgqFzohAKi6zSYuLxkD2peeAeMnMY2RKX_B1AyC6oh3vTMCUVKad-1fMQexoj7FCdow_nTSaC2Ez9RBiSV2WZPAsDWo9ToROFd8FuCDgzAglbnjRgeMMvlNR0DC2yfo2Lf4QsbqXS_jy_KroWxawJ5C3W3mxrkVbQcSdTfpFFKDVbvV9x2XA3y76LG7iYA=s150" 
+                        alt="Logo Catatan Fiqih" 
+                        class="h-10 w-auto drop-shadow-md hover:scale-105 transition-transform duration-300">
+                </a>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-full border border-slate-200 dark:border-slate-700">
+                <a href="#" class="px-4 py-1.5 rounded-full text-sm font-medium text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-700 shadow-sm transition-all hover:text-emerald-600">
+                    <i class="fas fa-home mr-1"></i> Jadwal
+                </a>
+                <a href="https://www.catatanfiqih.com" target="_blank" class="px-4 py-1.5 rounded-full text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-200 dark:hover:bg-slate-700/50 transition-all">
+                    <i class="fas fa-globe mr-1"></i> Website
+                </a>
+                <a href="https://instagram.com/catatanfiqih" target="_blank" class="px-4 py-1.5 rounded-full text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-pink-600 dark:hover:text-pink-400 hover:bg-slate-200 dark:hover:bg-slate-700/50 transition-all">
+                    <i class="fab fa-instagram mr-1"></i> IG
+                </a>
+                <a href="https://youtube.com/@catatanfiqih" target="_blank" class="px-4 py-1.5 rounded-full text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-slate-200 dark:hover:bg-slate-700/50 transition-all">
+                    <i class="fab fa-youtube mr-1"></i> Youtube
+                </a>
+            </div>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-3">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="w-9 h-9 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-yellow-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all focus:outline-none border border-slate-200 dark:border-slate-700">
+                    <i class="fas fa-sun text-sm hidden dark:block"></i>
+                    <i class="fas fa-moon text-sm block dark:hidden"></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden w-9 h-9 rounded-full flex items-center justify-center bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <div class="px-4 py-4 space-y-2">
+                <a href="#" class="block px-4 py-2 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 font-medium">
+                    <i class="fas fa-home w-6 text-center"></i> Jadwal Imam
+                </a>
+                <a href="https://www.catatanfiqih.com" target="_blank" class="block px-4 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                    <i class="fas fa-globe w-6 text-center"></i> Website Resmi
+                </a>
+                <a href="https://instagram.com/catatanfiqih" target="_blank" class="block px-4 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                    <i class="fab fa-instagram w-6 text-center"></i> Instagram
+                </a>
+                <a href="https://youtube.com/@catatanfiqih" target="_blank" class="block px-4 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                    <i class="fab fa-youtube w-6 text-center"></i> Youtube Channel
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Profile Section -->
+    <header class="w-full max-w-4xl mt-8 mb-8 text-center px-4 relative flex flex-col items-center">
+        <!-- Decorative Background Glow -->
+        <div class="absolute top-10 left-1/2 -translate-x-1/2 w-48 h-48 md:w-80 md:h-80 bg-emerald-500/20 dark:bg-emerald-500/20 rounded-full blur-[80px] -z-10"></div>
+        
+        <!-- Profile Image -->
+        <div class="relative w-32 h-32 md:w-40 md:h-40 mb-5 p-1 rounded-full bg-gradient-to-tr from-emerald-500 to-gold-400 shadow-xl">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiz25iSxXtBRNTigOPQaYIFArnyL00BkCbtEU7oUjMXdhwD0OTOyDR03EMbJeuNX0urNaCfJdeKbrQ2jYhmpjByp4kpK0OWTJHtSx9VTw4avxnNvZj7vEvwmGPaELJQooVdTt8Es7e9e33mDZClrhjWUrZhw2sho3kerZiB0zjqQyUsNPf0NHulRRGf79I=s16000" 
+                 alt="Tgk. Ir. Saiful Hadi, M.T" 
+                 class="w-full h-full object-cover rounded-full border-4 border-white dark:border-slate-900 profile-img bg-white">
+        </div>
+
+        <!-- Text Content -->
+        <div class="inline-block px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/50 border border-emerald-200 dark:border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-xs font-bold tracking-widest uppercase mb-3 shadow-sm">
+            Ramadhan & Syawal 1447 H / 2026 M
+        </div>
+        
+        <h1 class="text-3xl md:text-5xl font-bold text-slate-800 dark:text-white mb-2 font-serif tracking-wide leading-tight drop-shadow-sm">
+            Jadwal Imam Tarawih
+        </h1>
+        <h2 class="text-lg md:text-2xl text-gold-600 dark:text-gold-400 font-medium font-serif flex items-center justify-center gap-2">
+            Tgk. Ir. Saiful Hadi, M.T <i class="fas fa-check-circle text-xs md:text-sm text-blue-500" title="Verified"></i>
+        </h2>
+        
+        <!-- Action Buttons -->
+        <div class="mt-6 flex flex-wrap justify-center gap-3 no-print w-full max-w-md mx-auto">
+            <a href="https://wa.me/6285277590916" target="_blank" class="contact-btn flex-1 min-w-[160px] flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl transition-all shadow-lg shadow-emerald-600/20 font-medium group">
+                <i class="fab fa-whatsapp text-lg group-hover:scale-110 transition-transform"></i> WhatsApp
+            </a>
+            <button onclick="window.print()" class="flex-1 min-w-[160px] flex items-center justify-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl transition-all shadow-sm font-medium">
+                <i class="fas fa-print"></i> Cetak PDF
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="w-full max-w-5xl px-4 pb-12 flex flex-col gap-6">
+
+        <!-- Idul Fitri Card (Highlighted) -->
+        <div class="glass-card rounded-2xl p-1 relative overflow-hidden group shadow-xl border-emerald-100 dark:border-emerald-500/20">
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-emerald-900/5 dark:from-emerald-600/20 dark:to-emerald-900/20 opacity-100"></div>
+            <div class="rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10 text-center md:text-left">
+                <div class="flex-1">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-gold-100 dark:bg-gold-500/10 text-gold-700 dark:text-gold-400 text-xs font-bold mb-3 uppercase tracking-wider">
+                        <i class="fas fa-star text-gold-500"></i> Highlight
+                    </div>
+                    <h3 class="text-slate-800 dark:text-slate-100 font-serif text-3xl mb-1 font-bold">Shalat Idul Fitri</h3>
+                    <p class="text-slate-600 dark:text-emerald-100/70">1 Syawal 1447 H / 2026 M • Khutbah & Imam</p>
+                </div>
+                
+                <a href="https://maps.app.goo.gl/8FEmWudr88DLVtye6" target="_blank" class="group/loc bg-gradient-to-br from-white to-slate-50 dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700 p-4 pr-8 pl-8 rounded-xl shadow-lg flex items-center gap-4 transform transition-transform hover:scale-105 duration-300">
+                    <div class="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-xl group-hover/loc:bg-emerald-600 group-hover/loc:text-white transition-colors">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Lokasi</span>
+                        <span class="text-xl font-bold font-serif text-slate-800 dark:text-white group-hover/loc:text-emerald-600 dark:group-hover/loc:text-emerald-400 transition-colors" id="idul-fitri-loc">Masjid Al-Ikhlas Lubuk</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Progress Stats -->
+        <div class="grid grid-cols-2 gap-4 mb-2">
+            <div class="glass-card p-5 rounded-xl flex items-center justify-between border-l-4 border-l-emerald-500 shadow-md">
+                <div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">Terjadwal</div>
+                    <div class="text-3xl font-bold text-slate-800 dark:text-white" id="total-filled">0</div>
+                </div>
+                <div class="text-emerald-500/20 text-4xl">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+            </div>
+            <div class="glass-card p-5 rounded-xl flex items-center justify-between border-l-4 border-l-slate-300 dark:border-l-slate-600 shadow-md">
+                <div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">Kosong</div>
+                    <div class="text-3xl font-bold text-slate-400 dark:text-slate-400" id="total-empty">0</div>
+                </div>
+                <div class="text-slate-400/20 text-4xl">
+                    <i class="fas fa-calendar-minus"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarawih Schedule Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="schedule-grid">
+            <!-- Cards will be injected here via JavaScript -->
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full text-center py-8 text-slate-500 text-sm border-t border-slate-200 dark:border-slate-800 mt-auto bg-white dark:bg-slate-950 transition-colors">
+        <div class="flex flex-col items-center">
+            
+            <!-- Logo & Icons Row -->
+            <div class="flex flex-wrap justify-center items-center gap-8 mb-4">
+                <!-- Logo -->
+                <div class="opacity-80 hover:opacity-100 transition-opacity">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgqFzohAKi6zSYuLxkD2peeAeMnMY2RKX_B1AyC6oh3vTMCUVKad-1fMQexoj7FCdow_nTSaC2Ez9RBiSV2WZPAsDWo9ToROFd8FuCDgzAglbnjRgeMMvlNR0DC2yfo2Lf4QsbqXS_jy_KroWxawJ5C3W3mxrkVbQcSdTfpFFKDVbvV9x2XA3y76LG7iYA=s150" class="h-8 w-auto grayscale hover:grayscale-0 transition-all">
+                </div>
+                
+                <!-- Social Icons -->
+                <div class="flex justify-center items-center gap-6">
+                     <a href="https://www.catatanfiqih.com" target="_blank" class="text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors transform hover:scale-110"><i class="fas fa-globe text-xl"></i></a>
+                     <a href="https://instagram.com/catatanfiqih" target="_blank" class="text-slate-400 hover:text-pink-600 dark:hover:text-pink-400 transition-colors transform hover:scale-110"><i class="fab fa-instagram text-xl"></i></a>
+                     <a href="https://youtube.com/@catatanfiqih" target="_blank" class="text-slate-400 hover:text-red-600 dark:hover:text-red-400 transition-colors transform hover:scale-110"><i class="fab fa-youtube text-xl"></i></a>
+                </div>
+            </div>
+
+            <!-- Credits -->
+            <div class="text-slate-400">
+                <p class="px-4 text-xs">Semoga Allah memberikan kesehatan dan keberkahan dalam berdakwah.</p>
+                <p class="mt-2 text-[10px] opacity-50">&copy; 2026 Management Tgk. Ir. Saiful Hadi, M.T</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- THEME TOGGLE LOGIC ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        // Check Local Storage or System Preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+        });
+
+        // --- MOBILE MENU LOGIC ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- DATA & RENDER LOGIC ---
+        const idulFitriLocation = "Masjid Al-Ikhlas Lubuk";
+        
+        // Location Lookup Map (Original Name -> {New Name, Link})
+        const locationMap = {
+            "Masjid Lubuk": { name: "Masjid Al-Ikhlas Lubuk", url: "https://maps.app.goo.gl/8FEmWudr88DLVtye6" },
+            "Mns Siron": { name: "Menasah Lambarih", url: "https://maps.app.goo.gl/4cAUAUZDLzWL4HHY9" },
+            "Musalla Askoppol": { name: "Musallah Komplek Puskoppol", url: "https://maps.app.goo.gl/rZMj7hxrpFvwW2c59" },
+            "Mns Lamkawe": { name: "Menasah Lamkawe", url: "https://maps.app.goo.gl/2YHpp8PGvseHYAy87" },
+            "Menasah Dham Pulo": { name: "Menasah Dham Pulo", url: "https://maps.app.goo.gl/EXxQi6HKiM6Py4CD7" },
+            "Masjid RSJ": { name: "Musalla RSJ Aceh", url: "https://maps.app.goo.gl/An7BVcPF2kLFZBMr9" },
+            "Masjid Lamgarot": { name: "Masjid Baitul Izzati Lamgarot", url: "https://maps.app.goo.gl/LzTNojkxNGWVQPTu8" },
+            "Dayah Darul Ihsan": { name: "Dayah Darul Ihsan", url: "https://maps.app.goo.gl/e4Eg5z1myEdLuDTd6" },
+            "Darul Ihsan": { name: "Dayah Darul Ihsan", url: "https://maps.app.goo.gl/e4Eg5z1myEdLuDTd6" },
+            "Mns Lubuk": { name: "Menasah Lubuk Sukon", url: "https://maps.app.goo.gl/3pMyXtNTAVcLSrMR7" },
+            "Menasah Lubuk": { name: "Menasah Lubuk Sukon", url: "https://maps.app.goo.gl/3pMyXtNTAVcLSrMR7" },
+            "Dayah": { name: "Dayah Darul Aman Lubuk", url: "https://maps.app.goo.gl/TkU2rMAfVBxUJZrCA" },
+            "Masjid Lambaro": { name: "Masjid Jamik Lambaro", url: "https://maps.app.goo.gl/hEntWwNNAJwjDubQ7" },
+            "Menasah Dham": { name: "Menasah Dham Pulo", url: "https://maps.app.goo.gl/EXxQi6HKiM6Py4CD7" }
+        };
+
+        const rawSchedule = [
+            "", "", "Mns Siron", "Musalla Askoppol", "Masjid Lubuk", "Mns Lamkawe", 
+            "", "Menasah Dham Pulo", "Masjid RSJ", "Masjid Lubuk", "Masjid Lamgarot", 
+            "Menasah Tutong", "Musalla Askoppol", "Dayah Darul Ihsan", "Masjid Lubuk", 
+            "", "Mns Lubuk", "Menasah Dham Pulo", "Masjid RSJ", "Masjid Lubuk", 
+            "Dayah", "Masjid Lambaro", "", "Menasah di Indrapuri", "", 
+            "Darul Ihsan", "Dayah", "", "Menasah Dham", ""
+        ];
+
+        document.getElementById('idul-fitri-loc').innerText = idulFitriLocation;
+
+        const gridContainer = document.getElementById('schedule-grid');
+        let filledCount = 0;
+        let emptyCount = 0;
+
+        rawSchedule.forEach((location, index) => {
+            const night = index + 1;
+            const isFilled = location.trim() !== "";
+            if (isFilled) filledCount++; else emptyCount++;
+
+            // Lookup Details
+            let displayLocation = location;
+            let mapUrl = "#";
+            let hasLink = false;
+
+            if (isFilled) {
+                const details = locationMap[location];
+                if (details) {
+                    displayLocation = details.name;
+                    mapUrl = details.url;
+                    hasLink = !!details.url;
+                }
+            }
+
+            const card = document.createElement('div');
+
+            // Dynamic Styling Logic based on State (Filled/Empty)
+            let cardBase = "glass-card p-5 rounded-xl flex flex-col justify-between group h-full transition-all duration-300 relative overflow-hidden shadow-sm ";
+            
+            if (isFilled) {
+                cardBase += "border-l-4 border-l-gold-500 hover:shadow-lg hover:-translate-y-1 ";
+                // Light mode hover
+                cardBase += "hover:bg-white dark:hover:bg-slate-800 ";
+            } else {
+                cardBase += "border-l-4 border-l-slate-300 dark:border-l-slate-700 opacity-60 hover:opacity-100 ";
+                cardBase += "bg-white/50 dark:bg-slate-800/30 "; 
+            }
+
+            const badgeColor = isFilled
+                ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/20"
+                : "bg-slate-200 text-slate-600 dark:bg-slate-700 dark:text-slate-400 border-slate-300 dark:border-slate-600";
+
+            // Title HTML: If link exists, make it a link
+            let titleHTML = '';
+            const titleClasses = isFilled
+                ? "text-lg font-bold font-serif line-clamp-2 transition-colors text-slate-800 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400"
+                : "text-lg font-bold font-serif line-clamp-2 text-slate-400 dark:text-slate-500 italic font-normal";
+            
+            if (isFilled && hasLink) {
+                titleHTML = `<a href="${mapUrl}" target="_blank" class="${titleClasses} location-link" title="Buka di Google Maps">${displayLocation} <i class="fas fa-external-link-alt text-xs ml-1 opacity-50"></i></a>`;
+            } else {
+                titleHTML = `<h4 class="${titleClasses}">${isFilled ? displayLocation : 'Kosong'}</h4>`;
+            }
+            
+            const iconContent = isFilled
+                ? `<div class="absolute top-4 right-4 text-3xl text-gold-500/20 group-hover:text-gold-500/40 transition-colors"><i class="fas fa-moon"></i></div>`
+                : `<div class="absolute top-4 right-4 text-3xl text-slate-400/20"><i class="far fa-calendar"></i></div>`;
+
+            card.className = cardBase;
+            card.innerHTML = `
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="${badgeColor} px-3 py-1 rounded-full text-xs font-bold border">
+                            Malam ${night}
+                        </span>
+                    </div>
+                    ${titleHTML}
+                </div>
+                ${iconContent}
+                ${isFilled ? '<div class="mt-4 w-12 h-1 bg-emerald-500 rounded-full opacity-50 group-hover:w-full transition-all duration-500"></div>' : ''}
+            `;
+
+            gridContainer.appendChild(card);
+        });
+
+        document.getElementById('total-filled').innerText = filledCount;
+        document.getElementById('total-empty').innerText = emptyCount;
+
+    </script>
+</body>
+</html>
