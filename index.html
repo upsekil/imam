@@ -5,39 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jadwal Imam - Tgk. Ir. Saiful Hadi, M.T</title>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Tailwind Configuration (Defined BEFORE loading Tailwind) -->
     <script>
-        tailwind.config = {
-            darkMode: 'class', // Mengaktifkan dark mode manual
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'], // Uniform font everywhere
-                    },
-                    colors: {
-                        emerald: {
-                            600: '#16a34a', // Green bar color
-                            850: '#064e3b',
-                            950: '#022c22',
-                        },
-                        midnight: {
-                            800: '#1e293b',
-                            900: '#0f172a',
-                        },
-                        gold: {
-                            400: '#fbbf24',
-                            500: '#f59e0b',
-                            600: '#d97706',
+        function setupTailwind() {
+            if (typeof tailwind !== 'undefined') {
+                tailwind.config = {
+                    darkMode: 'class', // Mengaktifkan dark mode manual
+                    theme: {
+                        extend: {
+                            fontFamily: {
+                                sans: ['Roboto', 'sans-serif'], // Uniform font everywhere
+                            },
+                            colors: {
+                                emerald: {
+                                    600: '#16a34a', // Green bar color
+                                    850: '#064e3b',
+                                    950: '#022c22',
+                                },
+                                midnight: {
+                                    800: '#1e293b',
+                                    900: '#0f172a',
+                                },
+                                gold: {
+                                    400: '#fbbf24',
+                                    500: '#f59e0b',
+                                    600: '#d97706',
+                                }
+                            }
                         }
                     }
                 }
@@ -45,11 +47,14 @@
         }
     </script>
 
+    <!-- Tailwind CSS (Load and trigger setup) -->
+    <script src="https://cdn.tailwindcss.com" onload="setupTailwind()"></script>
+    
     <style>
         /* Base styles & Transitions */
         body {
             transition: background-color 0.3s, color 0.3s;
-            font-family: 'Outfit', sans-serif; /* Global Font Uniformity */
+            font-family: 'Roboto', sans-serif; /* Global Font Uniformity */
         }
 
         /* Dark Mode Background - Deep Dark Blue */
@@ -338,7 +343,7 @@
         </div>
         <!-- --- END PRINT LAYOUT --- -->
 
-        <!-- Idul Fitri Card (Highlighted) - UPDATED VERTICAL TEXT (SCREEN ONLY) -->
+        <!-- Idul Fitri Card (Highlighted) - FIXED RESPONSIVENESS (SCREEN ONLY) -->
         <div class="highlight-card-container no-print">
             <div class="flex h-auto min-h-[160px] rounded-2xl overflow-hidden shadow-xl hover:scale-[1.01] transition-transform duration-300 group cursor-pointer relative border border-slate-200 dark:border-slate-700 bg-emerald-50/50 dark:bg-slate-800">
                 <!-- Glowing effect -->
@@ -352,7 +357,7 @@
                 </div>
                 
                 <!-- Main Content Area -->
-                <div class="flex-1 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+                <div class="flex-1 p-3 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 relative z-10">
                     
                     <!-- Left Text Section -->
                     <div class="flex flex-col items-center md:items-start text-center md:text-left gap-2 w-full md:w-auto">
@@ -363,27 +368,27 @@
                         </div>
                         
                         <!-- Title -->
-                        <h3 class="font-bold text-3xl md:text-4xl text-slate-900 dark:text-white leading-tight">
+                        <h3 class="font-bold text-2xl md:text-4xl text-slate-900 dark:text-white leading-tight">
                             Shalat Idul Fitri
                         </h3>
                         
                         <!-- Subtitle -->
-                        <p class="text-slate-600 dark:text-slate-300 text-sm md:text-base font-medium">
+                        <p class="text-slate-600 dark:text-slate-300 text-xs md:text-base font-medium">
                             1 Syawal 1447 H / 2026 M • Imam Shalat Id
                         </p>
                     </div>
 
-                    <!-- Right Location Box Section -->
-                    <a href="https://maps.app.goo.gl/8FEmWudr88DLVtye6" target="_blank" class="bg-white dark:bg-slate-700 rounded-xl shadow-sm border border-slate-100 dark:border-slate-600 p-4 flex items-center gap-4 min-w-[280px] hover:shadow-md transition-shadow group/loc w-full md:w-auto">
+                    <!-- Right Location Box Section - FIXED WIDTH AND PADDING -->
+                    <a href="https://maps.app.goo.gl/8FEmWudr88DLVtye6" target="_blank" class="bg-white dark:bg-slate-700 rounded-xl shadow-sm border border-slate-100 dark:border-slate-600 p-3 md:p-4 flex items-center gap-3 md:gap-4 w-full md:w-auto md:min-w-[280px] hover:shadow-md transition-shadow group/loc">
                         <!-- Icon Circle -->
-                        <div class="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
-                            <i class="fas fa-map-marker-alt text-xl"></i>
+                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
+                            <i class="fas fa-map-marker-alt text-lg md:text-xl"></i>
                         </div>
                         
                         <!-- Text Info -->
-                        <div class="flex flex-col">
-                            <span class="text-[10px] font-bold tracking-widest uppercase text-slate-400 dark:text-slate-400 mb-0.5">LOKASI</span>
-                            <span class="font-bold text-slate-800 dark:text-white text-lg leading-tight group-hover/loc:text-emerald-600 transition-colors">Masjid Al-Iklas Lubuk</span>
+                        <div class="flex flex-col overflow-hidden">
+                            <span class="text-[9px] md:text-[10px] font-bold tracking-widest uppercase text-slate-400 dark:text-slate-400 mb-0.5">LOKASI</span>
+                            <span class="font-bold text-slate-800 dark:text-white text-base md:text-lg leading-tight group-hover/loc:text-emerald-600 transition-colors truncate">Masjid Al-Iklas Lubuk</span>
                         </div>
                     </a>
                     
@@ -457,7 +462,7 @@
 
             <!-- Credits -->
             <div class="text-slate-400">
-                <p class="px-4 text-xs">Semoga kita semua menjadi Insan yang bertaqwa, Aamin.</p>
+                <p class="px-4 text-xs">Semoga kita semua menjadi Insan yang bertaqwa.</p>
                 <p class="mt-2 text-[10px] opacity-50">&copy; 2026 Managed by upsekil.com</p>
             </div>
         </div>
