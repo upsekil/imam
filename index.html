@@ -93,103 +93,82 @@
             text-decoration-thickness: 2px;
             text-underline-offset: 4px;
         }
+        
+        /* Print Table Styles - Hidden by default */
+        #print-container {
+            display: none;
+        }
 
         /* --- PRINT SETTINGS (A4 Optimization) --- */
         @media print {
             @page {
                 size: A4 portrait;
-                margin: 0.8cm;
+                margin: 1cm;
             }
             body { 
                 background: white !important; 
                 color: black !important; 
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
-                font-size: 10px; /* Base font size smaller */
+                font-family: 'Times New Roman', serif !important; /* Serif for official look */
             }
             
-            /* Hide non-essential elements */
-            .no-print, nav, #theme-toggle, .contact-btn, footer .flex-wrap, #search-filter-container { 
+            /* Hide Web Elements */
+            .no-print, nav, #theme-toggle, .contact-btn, footer, #search-filter-container, #schedule-grid, header, .glass-card, .profile-img-container, #progress-stats { 
                 display: none !important; 
+            }
+            
+            /* Show Print Elements */
+            #print-container {
+                display: block !important;
+                width: 100%;
             }
             
             /* Container Adjustments */
             main {
-                padding-bottom: 0 !important;
-                gap: 10px !important;
+                padding: 0 !important;
+                margin: 0 !important;
                 max-width: 100% !important;
+                display: block !important;
+            }
+            
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 11pt;
+            }
+            
+            th, td {
+                border: 1px solid #000;
+                padding: 6px 8px;
+                text-align: left;
+            }
+            
+            th {
+                background-color: #f0f0f0 !important;
+                font-weight: bold;
+                text-align: center;
             }
 
-            /* Header Adjustments */
-            header {
-                margin-top: 0 !important;
-                margin-bottom: 10px !important;
-            }
-            header h1 { font-size: 24px !important; margin-bottom: 2px !important; }
-            header h2 { font-size: 16px !important; color: #d97706 !important; }
-            header .profile-img { width: 80px !important; height: 80px !important; margin-bottom: 5px !important; border: 2px solid #ccc !important; }
-            header .bg-emerald-100 { background: none !important; border: 1px solid #ccc; padding: 2px 8px; font-size: 9px !important; color: #333 !important; }
-
-            /* Idul Fitri Card Compact */
-            .glass-card {
-                background: white !important;
-                border: 1px solid #ddd !important;
-                box-shadow: none !important;
-                padding: 10px !important;
-                break-inside: avoid;
+            .print-header {
+                text-align: center;
+                margin-bottom: 20px;
+                border-bottom: 2px solid black;
+                padding-bottom: 10px;
             }
             
-            /* Hide Stats to save space */
-            .grid-cols-2.gap-4.mb-2 { display: none !important; }
-
-            /* Grid Layout 5 Columns for A4 */
-            #schedule-grid {
-                grid-template-columns: repeat(5, 1fr) !important;
-                gap: 8px !important;
+            .print-signature {
+                margin-top: 40px;
+                display: flex;
+                justify-content: flex-end;
             }
-
-            /* Card Styling for Print */
-            #schedule-grid .glass-card {
-                padding: 8px !important;
-                min-height: 70px !important;
-                border-left-width: 3px !important;
-            }
-            
-            #schedule-grid h4 {
-                font-size: 10px !important;
-                line-height: 1.2 !important;
-                margin-top: 4px !important;
-            }
-            
-            /* Badge Styling */
-            #schedule-grid span.rounded-full {
-                padding: 1px 6px !important;
-                font-size: 8px !important;
-                background: #f0f0f0 !important;
-                color: #333 !important;
-                border: 1px solid #ccc !important;
-            }
-            
-            /* Hide Icons in Grid to save visual clutter */
-            #schedule-grid .fa-moon, #schedule-grid .fa-calendar {
-                display: none !important;
-            }
-            
-            /* Footer Compact */
-            footer {
-                padding: 10px 0 !important;
-                margin-top: 10px !important;
-                border-top: 1px solid #eee !important;
-            }
-            footer p { font-size: 8px !important; }
-            footer img { height: 20px !important; filter: grayscale(100%); }
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center selection:bg-emerald-500 selection:text-white">
 
     <!-- Navigation / Top Bar -->
-    <nav class="w-full sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-800 transition-colors">
+    <nav class="w-full sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-800 transition-colors no-print">
         <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
             
             <!-- Logo -->
@@ -233,7 +212,7 @@
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 no-print">
             <div class="px-4 py-4 space-y-2">
                 <a href="#" class="block px-4 py-2 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 font-medium">
                     <i class="fas fa-home w-6 text-center"></i> Jadwal Imam
@@ -252,12 +231,12 @@
     </nav>
 
     <!-- Header / Profile Section -->
-    <header class="w-full max-w-4xl mt-8 mb-8 text-center px-4 relative flex flex-col items-center">
+    <header class="w-full max-w-4xl mt-8 mb-8 text-center px-4 relative flex flex-col items-center no-print">
         <!-- Decorative Background Glow -->
         <div class="absolute top-10 left-1/2 -translate-x-1/2 w-48 h-48 md:w-80 md:h-80 bg-emerald-500/20 dark:bg-emerald-500/20 rounded-full blur-[80px] -z-10"></div>
         
         <!-- Profile Image -->
-        <div class="relative w-32 h-32 md:w-40 md:h-40 mb-5 p-1 rounded-full bg-gradient-to-tr from-emerald-500 to-gold-400 shadow-xl">
+        <div class="profile-img-container relative w-32 h-32 md:w-40 md:h-40 mb-5 p-1 rounded-full bg-gradient-to-tr from-emerald-500 to-gold-400 shadow-xl">
             <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiz25iSxXtBRNTigOPQaYIFArnyL00BkCbtEU7oUjMXdhwD0OTOyDR03EMbJeuNX0urNaCfJdeKbrQ2jYhmpjByp4kpK0OWTJHtSx9VTw4avxnNvZj7vEvwmGPaELJQooVdTt8Es7e9e33mDZClrhjWUrZhw2sho3kerZiB0zjqQyUsNPf0NHulRRGf79I=s16000" 
                  alt="Tgk. Ir. Saiful Hadi, M.T" 
                  class="w-full h-full object-cover rounded-full border-4 border-white dark:border-slate-900 profile-img bg-white">
@@ -289,8 +268,66 @@
     <!-- Main Content -->
     <main class="w-full max-w-5xl px-4 pb-12 flex flex-col gap-6">
 
-        <!-- Idul Fitri Card (Highlighted) -->
-        <div class="glass-card rounded-2xl p-1 relative overflow-hidden group shadow-xl border-emerald-100 dark:border-emerald-500/20">
+        <!-- --- PRINT LAYOUT CONTAINER (Hidden on Screen) --- -->
+        <div id="print-container">
+            <div class="print-header">
+                <h1 style="font-size: 24pt; margin: 0; font-family: 'Amiri', serif;">Jadwal Imam Tarawih & Idul Fitri</h1>
+                <h2 style="font-size: 16pt; margin: 5px 0 0 0; color: #444;">Tgk. Ir. Saiful Hadi, M.T</h2>
+                <p style="font-size: 12pt; margin: 5px 0 0 0;">Ramadhan & Syawal 1447 H / 2026 M</p>
+            </div>
+
+            <!-- Double Column Table Layout -->
+            <div style="display: flex; gap: 20px;">
+                <!-- Table Left (1-15) -->
+                <div style="flex: 1;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 25%;">Malam</th>
+                                <th>Lokasi / Masjid</th>
+                            </tr>
+                        </thead>
+                        <tbody id="print-table-left">
+                            <!-- JS populated -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Table Right (16-30) -->
+                <div style="flex: 1;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 25%;">Malam</th>
+                                <th>Lokasi / Masjid</th>
+                            </tr>
+                        </thead>
+                        <tbody id="print-table-right">
+                            <!-- JS populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Idul Fitri Box for Print -->
+            <div style="margin-top: 20px; border: 2px solid #000; padding: 10px; text-align: center;">
+                <strong>IMAM SHALAT IDUL FITRI 1447 H</strong><br>
+                <span style="font-size: 14pt;" id="print-idul-fitri-loc">Masjid Al-Ikhlas Lubuk</span>
+            </div>
+
+            <!-- Signature -->
+            <div class="print-signature">
+                <div style="text-align: center; min-width: 200px;">
+                    <p>Aceh Besar, Ramadhan 1447 H</p>
+                    <br><br><br>
+                    <p style="border-bottom: 1px solid black; display: inline-block; min-width: 150px; font-weight: bold;">Tgk. Ir. Saiful Hadi, M.T</p>
+                </div>
+            </div>
+        </div>
+        <!-- --- END PRINT LAYOUT --- -->
+
+        <!-- Idul Fitri Card (Highlighted) - SCREEN ONLY -->
+        <div class="glass-card rounded-2xl p-1 relative overflow-hidden group shadow-xl border-emerald-100 dark:border-emerald-500/20 no-print">
             <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-emerald-900/5 dark:from-emerald-600/20 dark:to-emerald-900/20 opacity-100"></div>
             <div class="rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10 text-center md:text-left">
                 <div class="flex-1">
@@ -298,7 +335,7 @@
                         <i class="fas fa-star text-gold-500"></i> Highlight
                     </div>
                     <h3 class="text-slate-800 dark:text-slate-100 font-serif text-3xl mb-1 font-bold">Shalat Idul Fitri</h3>
-                    <p class="text-slate-600 dark:text-emerald-100/70">1 Syawal 1447 H / 2026 M • Imam Shalad ID</p>
+                    <p class="text-slate-600 dark:text-emerald-100/70">1 Syawal 1447 H / 2026 M • Khutbah & Imam</p>
                 </div>
                 
                 <a href="https://maps.app.goo.gl/8FEmWudr88DLVtye6" target="_blank" class="group/loc bg-gradient-to-br from-white to-slate-50 dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700 p-4 pr-8 pl-8 rounded-xl shadow-lg flex items-center gap-4 transform transition-transform hover:scale-105 duration-300">
@@ -313,8 +350,8 @@
             </div>
         </div>
 
-        <!-- Progress Stats -->
-        <div class="grid grid-cols-2 gap-4 mb-2">
+        <!-- Progress Stats - SCREEN ONLY -->
+        <div id="progress-stats" class="grid grid-cols-2 gap-4 mb-2 no-print">
             <div class="glass-card p-5 rounded-xl flex items-center justify-between border-l-4 border-l-emerald-500 shadow-md">
                 <div>
                     <div class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">Terjadwal</div>
@@ -335,8 +372,8 @@
             </div>
         </div>
 
-        <!-- Search & Filter Section -->
-        <div id="search-filter-container" class="glass-card p-4 rounded-xl mb-2 flex flex-col md:flex-row gap-4 items-center justify-between sticky top-20 z-40 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-lg">
+        <!-- Search & Filter Section - SCREEN ONLY -->
+        <div id="search-filter-container" class="glass-card p-4 rounded-xl mb-2 flex flex-col md:flex-row gap-4 items-center justify-between sticky top-20 z-40 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-lg no-print">
             <!-- Search Input -->
             <div class="relative w-full md:w-1/2">
                 <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
@@ -358,15 +395,15 @@
             </div>
         </div>
 
-        <!-- Tarawih Schedule Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="schedule-grid">
+        <!-- Tarawih Schedule Grid - SCREEN ONLY -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 no-print" id="schedule-grid">
             <!-- Cards will be injected here via JavaScript -->
         </div>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="w-full text-center py-8 text-slate-500 text-sm border-t border-slate-200 dark:border-slate-800 mt-auto bg-white dark:bg-slate-950 transition-colors">
+    <!-- Footer - SCREEN ONLY -->
+    <footer class="w-full text-center py-8 text-slate-500 text-sm border-t border-slate-200 dark:border-slate-800 mt-auto bg-white dark:bg-slate-950 transition-colors no-print">
         <div class="flex flex-col items-center">
             
             <!-- Logo & Icons Row -->
@@ -386,8 +423,8 @@
 
             <!-- Credits -->
             <div class="text-slate-400">
-                <p class="px-4 text-xs">Semoga Allah memberikan kesehatan dan keberkahan dalam berdakwah.</p>
-                <p class="mt-2 text-[10px] opacity-50">&copy; 2026 Management Tgk. Ir. Saiful Hadi, M.T</p>
+                <p class="px-4 text-xs">Semoga kita semua menjadi insan yang bertaqwa.</p>
+                <p class="mt-2 text-[10px] opacity-50">&copy; 2026 Managed by upsekil.com</p>
             </div>
         </div>
     </footer>
@@ -423,14 +460,16 @@
         });
 
         // --- DATA & RENDER LOGIC ---
-        const idulFitriLocation = "Masjid Al-Ikhlas Lubuk";
+        const idulFitriLocation = "Masjid Al-Iklas Lubuk";
         
         // Location Lookup Map
         const locationMap = {
+            "Masjid Al-Iklas Lubuk": { name: "Masjid Al-Ikhlas Lubuk", url: "https://maps.app.goo.gl/8FEmWudr88DLVtye6" },
             "Masjid Lubuk": { name: "Masjid Al-Ikhlas Lubuk", url: "https://maps.app.goo.gl/8FEmWudr88DLVtye6" },
             "Masjid Lubuk Suko": { name: "Masjid Lubuk Suko", url: "https://maps.app.goo.gl/8FEmWudr88DLVtye6" },
             "Masjid Lubuk Sukon": { name: "Masjid Lubuk Sukon", url: "https://maps.app.goo.gl/8FEmWudr88DLVtye6" },
-            "Menasa Siron": { name: "Menasa Siron", url: "https://maps.app.goo.gl/4cAUAUZDLzWL4HHY9" }, 
+            "Menasa Siron": { name: "Menasah Siron", url: "https://maps.app.goo.gl/4cAUAUZDLzWL4HHY9" },
+            "Menasah Siron": { name: "Menasah Siron", url: "https://maps.app.goo.gl/4cAUAUZDLzWL4HHY9" }, 
             "Musalla Komplek Puskoppol": { name: "Musallah Komplek Puskoppol", url: "https://maps.app.goo.gl/rZMj7hxrpFvwW2c59" },
             "Menasah Lamkawe": { name: "Menasah Lamkawe", url: "https://maps.app.goo.gl/2YHpp8PGvseHYAy87" },
             "Menasah Dham Pulo": { name: "Menasah Dham Pulo", url: "https://maps.app.goo.gl/EXxQi6HKiM6Py4CD7" },
@@ -439,37 +478,39 @@
             "Dayah Darul Ihsan": { name: "Dayah Darul Ihsan", url: "https://maps.app.goo.gl/e4Eg5z1myEdLuDTd6" },
             "Darul Ihsan Lambaed": { name: "Darul Ihsan Lambaed", url: "https://maps.app.goo.gl/e4Eg5z1myEdLuDTd6" },
             "Menasah Lubuk Sukon": { name: "Menasah Lubuk Sukon", url: "https://maps.app.goo.gl/3pMyXtNTAVcLSrMR7" },
+            "Menasah LubukSukon": { name: "Menasah Lubuk Sukon", url: "https://maps.app.goo.gl/3pMyXtNTAVcLSrMR7" },
             "Dayah Darul Aman Lubuk": { name: "Dayah Darul Aman Lubuk", url: "https://maps.app.goo.gl/TkU2rMAfVBxUJZrCA" },
             "Dayah Darul Aman Lubok": { name: "Dayah Darul Aman Lubok", url: "https://maps.app.goo.gl/TkU2rMAfVBxUJZrCA" },
-            "Masjid Jamik Lambaro": { name: "Masjid Jamik Lambaro", url: "https://maps.app.goo.gl/hEntWwNNAJwjDubQ7" }
+            "Masjid Jamik Lambaro": { name: "Masjid Jamik Lambaro", url: "https://maps.app.goo.gl/hEntWwNNAJwjDubQ7" },
+            "Menasah Lambarih": { name: "Menasah Lambarih", url: "https://maps.app.goo.gl/4cAUAUZDLzWL4HHY9" }
         };
 
         const rawSchedule = [
             "", 
             "", 
-            "Menasa Siron", 
+            "Menasah Siron", 
             "Musalla Komplek Puskoppol", 
-            "Masjid Lubuk Suko", 
+            "Masjid Al-Iklas Lubuk", 
             "Menasah Lamkawe", 
-            "", 
+            "Dayah Darul Aman Lubuk", 
             "Menasah Dham Pulo", 
             "Musalla RSJ Aceh", 
-            "Masjid Lubuk Sukon", 
+            "Masjid Al-Iklas Lubuk", 
             "Masjid Baitul Izzati Lamgarot", 
             "Menasah Tutong", 
             "Musalla Komplek Puskoppol", 
             "Dayah Darul Ihsan", 
-            "Masjid Lubuk Sukon", 
+            "Masjid Al-Iklas Lubuk", 
             "", 
-            "Menasah Lubuk Sukon", 
+            "Menasah LubukSukon", 
             "Menasah Dham Pulo", 
             "Musalla RSJ Aceh", 
-            "Masjid Lubuk", 
+            "Masjid Al-Iklas Lubuk", 
             "Dayah Darul Aman Lubuk", 
             "Masjid Jamik Lambaro", 
             "", 
             "Menasah di Indrapuri", 
-            "", 
+            "Menasah Lambarih", 
             "Darul Ihsan Lambaed", 
             "Dayah Darul Aman Lubok", 
             "", 
@@ -478,8 +519,12 @@
         ];
 
         document.getElementById('idul-fitri-loc').innerText = idulFitriLocation;
+        document.getElementById('print-idul-fitri-loc').innerText = idulFitriLocation;
 
         const gridContainer = document.getElementById('schedule-grid');
+        const printTableLeft = document.getElementById('print-table-left');
+        const printTableRight = document.getElementById('print-table-right');
+        
         let filledCount = 0;
         let emptyCount = 0;
 
@@ -502,6 +547,7 @@
                 }
             }
 
+            // --- 1. Populate Screen Grid (Cards) ---
             const card = document.createElement('div');
             
             // Set Data Attributes for Search & Filter
@@ -554,6 +600,20 @@
             `;
 
             gridContainer.appendChild(card);
+
+            // --- 2. Populate Print Table (Rows) ---
+            const printRow = document.createElement('tr');
+            printRow.innerHTML = `
+                <td style="text-align: center;">${night}</td>
+                <td>${isFilled ? displayLocation : '-'}</td>
+            `;
+            
+            // Split into Left (1-15) and Right (16-30) tables
+            if (night <= 15) {
+                printTableLeft.appendChild(printRow);
+            } else {
+                printTableRight.appendChild(printRow);
+            }
         });
 
         document.getElementById('total-filled').innerText = filledCount;
